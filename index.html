@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-screen" id="start-screen">
+            <h1>QUIZ</h1><br><br><br><br><br><br><br><br><br>
+            <button id="start-btn">START</button>
+        </div>
+        <div class="quiz-screen" id="question-screen" style="display: none;">
+            <div class="top">
+            <p class="question-number">01</p>
+            <p class="question-text">Which planet in the Solar System is the smallest?</p>
+        </div>
+            <ol class="answer-list">
+                <li><button class="answer-btn"><span>A</span>Pluto</button></li>
+                <li><button class="answer-btn"> <span>B</span>Earth</button></li>
+                <li><button class="answer-btn"><span>C</span>Mercury</button></li>
+                <li><button class="answer-btn"><span>D</span>Mars</button></li>
+            </ol>
+        </div>
+        <div class="quiz-screen" id="result-screen" style="display: none;">
+            <h1 id="result-title">GREAT!</h1><br><br><br>
+            <p id="result-text">YOU WIN!</p><br><br><br><br>
+            <button id="restart-btn">TRY AGAIN</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    background: linear-gradient(135deg, #e0c3fc 0%, #f7a5fa 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 400px;
+    /* background: #e97ad6; */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+.quiz-screen {
+    padding: 20px;
+}
+.top{
+    text-align: center;
+    position: relative;
+    background-color: #a832f7;
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1.3rem;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.top .question-number{
+    position: relative;
+    top: -50px;
+    left: 100px;
+    background-color: #a832f7;
+    border-radius: 100px;
+    padding: 30px;
+    width: 50px;
+    height: 50px;
+
+}
+
+h1 {
+    color:#b989da;
+    font-size: 3.5em;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    background-color: #9553d3;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #dd8ec9;
+}
+
+.answer-list {
+    list-style: upper-alpha;
+    padding: 0;
+}
+
+.answer-btn {
+    background-color: #9553d3;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.answer-btn:hover {
+    background-color: #b4a5e4;
+}
+
+#result-screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+
+}
+#result-text{
+    background-color: #9553d3;
+    color: #fff;
+    padding: 5px 20px;
+    width: 150px;
+    font-weight: 800;
+    border-radius: 20px;
+}
+
+#result-screen p {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+
+
+/* Button hover and click effects */
+button {
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.question-text {
+    animation: slideIn 0.5s ease-out;
+} 
+
+Bounce animation
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+#result-screen h1 {
+    animation: bounce 1s ease;
+}
