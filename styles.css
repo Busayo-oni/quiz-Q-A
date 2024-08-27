@@ -71,7 +71,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:active {
     background-color: #dd8ec9;
 }
 
@@ -94,7 +94,7 @@ button:hover {
     width: 100%;
 }
 
-.answer-btn:hover {
+.answer-btn:active {
     background-color: #b4a5e4;
 }
 
@@ -124,7 +124,7 @@ button {
     transition: transform 0.2s, background-color 0.3s;
 }
 
-button:hover {
+button:active {
     transform: scale(1.05);
 }
 

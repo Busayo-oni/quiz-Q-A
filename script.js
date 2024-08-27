@@ -93,17 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
         startScreen.style.display = 'block';
     });
 
-    function showQuestion() {
-        const question = questions[currentQuestionIndex];
-        questionNumberElement.textContent = `0${currentQuestionIndex + 1}`;
-        questionTextElement.textContent = question.question;
-
-        answerListElement.innerHTML = '';
+    function showQuestion(question) {
+        questionNumber.textContent = `0${currentQuestionIndex + 1}`;
+        questionText.textContent = question.question;
+        answerList.innerHTML = '';
         question.answers.forEach(answer => {
             const button = document.createElement('button');
-            button.classList.add('answer-btn');
             button.textContent = answer;
-            answerListElement.appendChild(button);
+            button.classList.add('answer-btn');
+            button.addEventListener('click', () => selectAnswer(answer, question.correct));
+            answerList.appendChild(button);
         });
     }
 
