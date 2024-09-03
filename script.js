@@ -10,13 +10,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentQuestionIndex = 0;
     let score = 0;
+    let timer;
+    let remainingTime = 60;
 
     const questions = [
+        { 
+            question: "Who wrote 'Hamlet'?", 
+            answers: ["Shakespeare", "Hemingway", "Austen", "Dickens"],
+            correct: "Shakespeare" 
+        },
+        { 
+            question: "In which year did World War I start?", 
+            answers: ["1914", "1918", "1939", "1945"], 
+            correct: "1914" 
+        },
+        { 
+            question: "Who painted the Mona Lisa?", 
+            answers: ["Van Gogh", "Picasso", "Da Vinci", "Rembrandt"], 
+            correct: "Da Vinci" 
+        },
+        { 
+            question: "What is the hardest natural substance on Earth?", 
+            answers: ["Gold", "Iron", "Diamond", "Platinum"], 
+            correct: "Diamond" 
+        },
+        { 
+            question: "Which gas do plants absorb from the atmosphere?",
+            answers: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], 
+            correct: "Carbon Dioxide" 
+        },
         {
             question: "Which planet in the Solar System is the smallest?",
             answers: ["Pluto", "Earth", "Mercury", "Mars"],
             correctAnswer: "Mercury"
-        },
+        }, 
         {
             question: "What is the capital of France?",
             answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
@@ -64,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    shuffle(questions);
+
     startBtn.addEventListener('click', () => {
         startScreen.style.display = 'none';
         questionScreen.style.display = 'block';
@@ -80,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
                 showQuestion();
-            } else {
+            } 
+            else {
                 showResult();
             }
         }
@@ -89,20 +119,33 @@ document.addEventListener('DOMContentLoaded', () => {
     restartBtn.addEventListener('click', () => {
         currentQuestionIndex = 0;
         score = 0;
+        shuffle(questions);
         resultScreen.style.display = 'none';
         startScreen.style.display = 'block';
     });
 
-    function showQuestion(question) {
-        questionNumber.textContent = `0${currentQuestionIndex + 1}`;
-        questionText.textContent = question.question;
-        answerList.innerHTML = '';
+        function startTimer() {
+        remainingTime = 30;
+        timer = setInterval(() => {
+            remainingTime--;
+            if (remainingTime <= 0) {
+                clearInterval(timer);
+                nextQuestion();
+            }
+        }, 500);
+    }
+
+    function showQuestion() {
+        const question = questions[currentQuestionIndex];
+        questionNumberElement.textContent = `0${currentQuestionIndex + 1}`;
+        questionTextElement.textContent = question.question;
+
+        answerListElement.innerHTML = '';
         question.answers.forEach(answer => {
             const button = document.createElement('button');
-            button.textContent = answer;
             button.classList.add('answer-btn');
-            button.addEventListener('click', () => selectAnswer(answer, question.correct));
-            answerList.appendChild(button);
+            button.textContent = answer;
+            answerListElement.appendChild(button);
         });
     }
 
@@ -111,10 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
         resultScreen.style.display = 'block';
         if (score >= 7) {
             document.getElementById('result-title').textContent = "GREAT!";
-            document.getElementById('result-text').textContent = `YOU WIN! Score: ${score}/10`;
+            document.getElementById('result-text').textContent = `YOU WIN! Score: ${score}/15`;
         } else {
             document.getElementById('result-title').textContent = "Oh no!";
-            document.getElementById('result-text').textContent = `YOU LOST! Score: ${score}/10`;
+            document.getElementById('result-text').textContent = `YOU LOST! Score: ${score}/15`;
+        }
+    }
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
 });
