@@ -8,26 +8,43 @@
 </head>
 <body>
     <div class="quiz-container">
+        <!-- Start Screen -->
         <div class="quiz-screen" id="start-screen">
-            <h1>QUIZ</h1><br><br><br><br><br><br><br><br><br>
+            <img src="assets/images-removebg-preview.png" width="150px" height="100px" alt="top-brain">
+            <h1>QUIZ</h1>
+            <img src="assets/png-transparent-human-brain-brain-purple-people-human-brain-removebg-preview.png" width="150px" height="100px" alt="bottom-brain"><br>
             <button id="start-btn">START</button>
         </div>
+
+        <!-- Question Screen -->
         <div class="quiz-screen" id="question-screen" style="display: none;">
+            <div id="timer">05:00</div>
             <div class="top">
-            <p class="question-number">01</p>
-            <p class="question-text">Which planet in the Solar System is the smallest?</p>
+            <p class="question-number"></p>
+            <p class="question-text"></p>
+            </div>
+            <ul class="answer-list"></ul>
         </div>
-            <ol class="answer-list">
-                <li><button class="answer-btn"><span>A</span>Pluto</button></li>
-                <li><button class="answer-btn"> <span>B</span>Earth</button></li>
-                <li><button class="answer-btn"><span>C</span>Mercury</button></li>
-                <li><button class="answer-btn"><span>D</span>Mars</button></li>
-            </ol>
-        </div>
+
+        <!-- Result Screen -->
         <div class="quiz-screen" id="result-screen" style="display: none;">
-            <h1 id="result-title">GREAT!</h1><br><br><br>
-            <p id="result-text">YOU WIN!</p><br><br><br><br>
+            <h1 id="result-title"></h1>
+            <p id="result-text"></p>
+            <img src="assets/pngtree-alzheimer-clipart-purple-cartoon-monster-type-of-brain-vector-png-image_11063805.png" width="150px" height="200px" alt=""><br>
             <button id="restart-btn">TRY AGAIN</button>
+            <button id="leaderboard-btn">LEADERBOARD</button>
+            <div class="icon">
+                <button class="icon-en"><a href="#"><img src="assets/refresh_16dp_FFFFFF_FILL0_wght400_GRAD0_opsz20.png" alt=""></a></button>
+                <button class="icon-en"><a href=""><img src="assets/close_16dp_FFFFFF_FILL0_wght400_GRAD0_opsz20.png" alt=""></a></button>
+                <button class="icon-en"><a href=""><img src="assets/restart_alt_16dp_FFFFFF_FILL0_wght400_GRAD0_opsz20.png" alt=""></a></button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div class="quiz-screen" id="leaderboard-screen" style="display: none;">
+            <h1>LEADERBOARD</h1>
+            <ul id="leaderboard-list"></ul>
+            <button id="back-btn">BACK TO QUIZ</button>
         </div>
     </div>
     <script src="script.js"></script>
