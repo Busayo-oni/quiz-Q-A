@@ -21,8 +21,11 @@ body, html {
     padding: 20px;
 }
 
-.quiz-screen {
+#question-screen {
+    width: 90%;
+    max-width: 700px;
     padding: 20px;
+    animation: slideIn ease-out 0.7s;
 }
 
 h1 {
@@ -90,23 +93,27 @@ button:hover {
     background-color: #af82d4;
     padding: 10px;
     border-radius: 30px;
+    position: relative;
     color: #fff;
     font-weight: 600;
+    animation: step-start 0.7s ease-out 0s 1 normal none;  
 }
 .top .question-number{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 30px;
     background-color: #af82d4;
     border-radius: 100%;
-    position: relative;
-    top: -45px;
-    left: 40%;
-    padding: 10px;
+    position: absolute;
+    top: -30px;
+    left: 43%;
+    padding: 0;
+    padding-top: 5px;
 
 }
 .answer-list {
     list-style: upper-alpha;
     padding: 0;
+    transition: ease-out 2s;
     
 }
 
@@ -155,4 +162,18 @@ button:hover {
 #timer {
     font-size: 2em;
     margin-bottom: 20px;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
 }

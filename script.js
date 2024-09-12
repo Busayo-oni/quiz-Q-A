@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         questionTextEl.textContent = currentQuestion.question;
         answerListEl.innerHTML = '';
 
-        currentQuestion.answers.forEach(answer => {
+        currentQuestion.answers.forEach((answer, index) => {
             const li = document.createElement('li');
             const button = document.createElement('button');
             button.textContent = answer;
@@ -61,11 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => checkAnswer(button.textContent));
             li.appendChild(button);
             answerListEl.appendChild(li);
+
+            setTimeout(() => {
+                li.classList.add('slide-in');
+            }, index * 100); 
         });
 
         // Add fade-in animation
-        questionScreen.classList.add('fade-in');
-        setTimeout(() => questionScreen.classList.remove('fade-in'), 500);
+        questionScreen.classList.add('slide-in');
+        setTimeout(() => questionScreen.classList.add('slide-in'), 500);
     }
 
     function checkAnswer(answer) {
@@ -86,10 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
         timer = setInterval(() => {
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
+            const restartTimer = math.ceil(time/60);
             timerEl.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             if (--time < 0) {
                 clearInterval(timer);
                 endQuiz();
+            }
+            if (question < 0){
+                restartTimer(timer)
             }
         }, 1000);
     }
@@ -110,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveScore() {
         const participant = {
-            score: score,
-            time: new Date().toLocaleString()
+            score: `score= ${score}`,
+            time: `duration ${timer}s`
         };
         participants.push(participant);
         updateLeaderboard();
@@ -121,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leaderboardList.innerHTML = '';
         participants.forEach((participant, index) => {
             const li = document.createElement('li');
-            li.textContent = `Participant ${index + 1}: ${participant.score} - ${participant.time}`;
+            li.textContent = ` ${index + 1}.   ${participant.score} - ${participant.time}`;
             leaderboardList.appendChild(li);
         });
     }
