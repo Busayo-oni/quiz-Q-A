@@ -90,14 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         timer = setInterval(() => {
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
-            const restartTimer = math.ceil(time/60);
             timerEl.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             if (--time < 0) {
                 clearInterval(timer);
                 endQuiz();
-            }
-            if (question < 0){
-                restartTimer(timer)
             }
         }, 1000);
     }
